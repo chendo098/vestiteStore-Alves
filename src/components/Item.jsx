@@ -1,13 +1,13 @@
 import React from 'react'
 import {Card, Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 
 const Item = ({item}) => {
     
-    const {nombre, precio, imagen, categoria} = item
-    console.log("🚀 ~ file: Item.jsx ~ line 7 ~ Item ~ imagen", imagen)
+    const {nombre, precio, imagen, categoria, id} = item
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="m-auto text-center" style={{ width: '18rem' }}>
       <Card.Img 
         variant="top" 
         src={imagen}
@@ -18,7 +18,7 @@ const Item = ({item}) => {
       <Card.Body>
         <Card.Title>{nombre}</Card.Title>
         <Card.Text>$ {precio}</Card.Text>
-        <Button variant="primary">Comprar</Button>
+        <Button variant="warning"><Link to={`/products/${id}`}>Detalles</Link></Button>
       </Card.Body>
     </Card>
   )

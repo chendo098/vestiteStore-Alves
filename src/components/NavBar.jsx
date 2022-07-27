@@ -21,6 +21,7 @@ const NavBar = () => {
             Avalon Indumentaria Masculina
       </Navbar.Brand>
       <Nav className="mr-0">
+            <Nav.Link href="/products">Catálogo</Nav.Link>
             <Nav.Link href="/remeras">Remeras</Nav.Link>
             <Nav.Link href="/pantalones">Pantalones</Nav.Link>
             <Nav.Link href="/camisas">Camisas</Nav.Link>

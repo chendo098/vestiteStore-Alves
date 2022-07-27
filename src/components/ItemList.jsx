@@ -5,7 +5,6 @@ import { Spinner } from 'react-bootstrap';
 
 const ItemList = () => {
 const [items, setItems] = useState()
-console.log("🚀 ~ file: ItemList.jsx ~ line 7 ~ ItemList ~ items", items)
 
     const getProducts = new Promise ((resolve) => {
         setTimeout(() => {
@@ -30,7 +29,7 @@ console.log("🚀 ~ file: ItemList.jsx ~ line 7 ~ ItemList ~ items", items)
         <span className="visually-hidden">Loading...</span>
       </Spinner>
         : items.map(item => 
-        <div className='col-4'>
+        <div className='col-4 mt-2'>
         <Item key={item.id} item={item}/>
         </div>
         )}
