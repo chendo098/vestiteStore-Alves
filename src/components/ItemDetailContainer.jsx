@@ -7,7 +7,6 @@ import {useParams} from 'react-router-dom'
 
 const ItemDetailContainer = () => {
     const [details, setDetails] = useState()
-    console.log("🚀 ~ file: ItemDetailContainer.jsx ~ line 7 ~ ItemDetailContainer ~ details", details)
     const {id} = useParams()
 
     const getProduct = new Promise ((resolve) => {

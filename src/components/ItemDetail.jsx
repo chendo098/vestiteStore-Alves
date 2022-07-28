@@ -1,29 +1,42 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Image } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
+import { CartContext } from '../context/cartContext';
+import ItemCount from './ItemCount';
 
 
 const ItemDetail = ({details}) => {
-    const {imagen,categoria,nombre,precio,stock,descripcion} = details
+console.log("🚀 ~ file: ItemDetail.jsx ~ line 9 ~ ItemDetail ~ details", details)
+    const [cantidad, setCantidad] = useState(0);
+    const { addToCart } = useContext(CartContext);
+
+    const onAdd = (cantidad) => {
+      setCantidad(cantidad);
+      addToCart(details, cantidad);
+  };
 
   return (
     <div className='row m-auto'>
         <div className='col-12 col-md-6 text-center'>
             <Image
              variant="top" 
-             src={imagen}
-             alt={categoria}
+             src={details.imagen}
+             alt={details.categoria}
              width={500}
              height={400}
             />
         </div>
         <div className='col-12 col-md-6'>
-        <h1>Artículo {nombre}</h1>
-        <h3>Categoría: {categoria}</h3>
-        <h3>Precio: $ {precio}</h3>
-        <h4>Descripción: {descripcion}</h4>
-        <h4>Stock: {stock}</h4>
-        <Link className="button" to={`/cart`}>Ir a carrito</Link>
+        <h1>Artículo {details.nombre}</h1>
+        <h3>Categoría: {details.categoria}</h3>
+        <h3>Precio: $ {details.precio}</h3>
+        <h4>Descripción: {details.descripcion}</h4>
+        <h4>Stock: {details.stock}</h4>
+        {cantidad === 0 ? (
+                    <ItemCount stock={details.stock} initial={1} onAdd={onAdd} />
+                ) : (
+                    <Link to="/cart">Ir al carrito</Link>
+                )}
         </div>
     </div>
   )

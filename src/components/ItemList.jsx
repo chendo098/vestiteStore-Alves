@@ -1,37 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { products } from '../mock/products';
+import React from 'react'
 import Item from './Item';
-import { Spinner } from 'react-bootstrap';
 
-const ItemList = () => {
-const [items, setItems] = useState()
-
-    const getProducts = new Promise ((resolve) => {
-        setTimeout(() => {
-            resolve(products)
-        }, 2000);
-    });
-    
-    useEffect(() => {
-        getProducts
-        .then((data) => {
-            setItems(data);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-    }, [])
+const ItemList = ({items}) => {
 
   return (
     <div className='container m-auto row wrap'>
-        {!items ?
-        <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-        : items.map(item => 
-        <div className='col-4 mt-2'>
+        {items.map(item => 
         <Item key={item.id} item={item}/>
-        </div>
         )}
     </div>
   )
