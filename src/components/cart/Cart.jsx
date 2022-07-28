@@ -4,8 +4,7 @@ import { CartContext } from '../../context/cartContext'
 
 const Cart = () => {
 
-const {cart, deleteAll, deleteOne} = useContext(CartContext)
-console.log("🚀 ~ file: Cart.jsx ~ line 8 ~ Cart ~ cart", cart)
+const {cart, deleteAll, deleteOne, suma} = useContext(CartContext)
 
 
 
@@ -21,7 +20,7 @@ console.log("🚀 ~ file: Cart.jsx ~ line 8 ~ Cart ~ cart", cart)
     <div>
             {cart.map((prod) => (
                 <div key={prod.id} className="m-5 d-flex row text-center" >
-                  <div className='col-3'>
+                  <div className='col-2'>
                         <img src={prod.imagen} width="120px" height="120px" alt={prod.nombre} />
                   </div>
                     <div className='col-3'>
@@ -30,9 +29,12 @@ console.log("🚀 ~ file: Cart.jsx ~ line 8 ~ Cart ~ cart", cart)
                         <p>{prod.descripcion}</p>
                     </div> 
                     <div className='col-3'>
-                        <h2>$ {prod.precio}.-</h2>
+                        <h2>Cantidad: {prod.stock}</h2>
                     </div>
-                    <div className='col-3'>
+                    <div className='col-2'>
+                        <h2>$ {prod.precio}</h2>
+                    </div>
+                    <div className='col-2'>
                         <button onClick={() => deleteOne(prod.id)}>Eliminar</button>
                     </div>
                 </div>
@@ -42,7 +44,7 @@ console.log("🚀 ~ file: Cart.jsx ~ line 8 ~ Cart ~ cart", cart)
             <button onClick={deleteAll}>Eliminar todos los productos</button>
               </div>
               <div className='col-3'>
-            <h3>Total: </h3>
+            <h3>Total: $ {suma}</h3>
               </div>
             </div>
         </div>

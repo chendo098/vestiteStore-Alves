@@ -5,9 +5,18 @@ export const CartContext = createContext()
 
 const Provider = (props) => {
     const [cart, setCart] = useState([])
+    const [suma, setSuma] = useState(0)
+
+    const totalCart = () => {
+        // const suma = cart.reduce((a, b) => (a.stock * a.precio + b.stock * b.precio))
+        let  suma = 0
+        cart.forEach(item => suma += (item.precio * item.stock));
+        setSuma(suma)
+    }
 
     useEffect(() => {
-        // console.log(cart)
+        console.log(cart)
+        totalCart()
     }, [cart])
 
     const addToCart = (item, cantidad) => {
@@ -32,7 +41,7 @@ const Provider = (props) => {
     }
 
     return (
-         <CartContext.Provider value={{ cart, addToCart, deleteAll, deleteOne }}>
+         <CartContext.Provider value={{ cart, addToCart, deleteAll, deleteOne, suma }}>
             {props.children}
         </CartContext.Provider>
     )
