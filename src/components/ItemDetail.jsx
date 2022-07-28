@@ -6,7 +6,6 @@ import ItemCount from './ItemCount';
 
 
 const ItemDetail = ({details}) => {
-console.log("🚀 ~ file: ItemDetail.jsx ~ line 9 ~ ItemDetail ~ details", details)
     const [cantidad, setCantidad] = useState(0);
     const { addToCart } = useContext(CartContext);
 
@@ -36,7 +35,9 @@ console.log("🚀 ~ file: ItemDetail.jsx ~ line 9 ~ ItemDetail ~ details", detai
                     <ItemCount stock={details.stock} initial={1} onAdd={onAdd} />
                 ) : (
                     <Link to="/cart">Ir al carrito</Link>
-                )}
+                    )}
+                    <br/>
+                    <Link to="/">Seguir comprando</Link>
         </div>
     </div>
   )

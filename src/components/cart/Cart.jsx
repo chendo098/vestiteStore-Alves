@@ -1,9 +1,14 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../../context/cartContext'
 
 const Cart = () => {
 
-const {cart, deleteAll, deleteOne} = useContext()
+const {cart, deleteAll, deleteOne} = useContext(CartContext)
+console.log("🚀 ~ file: Cart.jsx ~ line 8 ~ Cart ~ cart", cart)
+
+
+
     if (cart.length === 0) {
         return (
             <h2>
@@ -13,7 +18,34 @@ const {cart, deleteAll, deleteOne} = useContext()
     }
 
   return (
-    <div>Cart</div>
+    <div>
+            {cart.map((prod) => (
+                <div key={prod.id} className="m-5 d-flex row text-center" >
+                  <div className='col-3'>
+                        <img src={prod.imagen} width="120px" height="120px" alt={prod.nombre} />
+                  </div>
+                    <div className='col-3'>
+                        <h2>{prod.nombre}</h2>
+                        <br />
+                        <p>{prod.descripcion}</p>
+                    </div> 
+                    <div className='col-3'>
+                        <h2>$ {prod.precio}.-</h2>
+                    </div>
+                    <div className='col-3'>
+                        <button onClick={() => deleteOne(prod.id)}>Eliminar</button>
+                    </div>
+                </div>
+            ))}
+            <div className='d-flex row m-5'>
+              <div className='col-3'>
+            <button onClick={deleteAll}>Eliminar todos los productos</button>
+              </div>
+              <div className='col-3'>
+            <h3>Total: </h3>
+              </div>
+            </div>
+        </div>
   )
 }
 

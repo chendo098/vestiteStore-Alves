@@ -7,7 +7,7 @@ const Provider = (props) => {
     const [cart, setCart] = useState([])
 
     useEffect(() => {
-        console.log(cart)
+        // console.log(cart)
     }, [cart])
 
     const addToCart = (item, cantidad) => {

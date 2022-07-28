@@ -40,3 +40,9 @@
 #navbar {
   color: whitesmoke; 
 }
+
+.links {
+  margin: 0px 10px;
+  color: black;
+  text-decoration: none;
+}

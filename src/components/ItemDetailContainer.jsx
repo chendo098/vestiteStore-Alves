@@ -9,14 +9,14 @@ const ItemDetailContainer = () => {
     const [details, setDetails] = useState()
     const {id} = useParams()
 
-    const getProduct = new Promise ((resolve) => {
+    const getProducts = new Promise ((resolve) => {
         setTimeout(() => {
             resolve(products.filter(prod => prod.id === Number(id)))
         }, 2000);
     });
     
     useEffect(() => {
-        getProduct
+        getProducts
         .then((data) => {
             setDetails(data);
         })
