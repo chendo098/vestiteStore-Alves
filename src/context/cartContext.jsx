@@ -21,7 +21,15 @@ const Provider = (props) => {
 
     const addToCart = (item, cantidad) => {
         if (isInCart(item.id)) {
-            alert('Ya está en el carrito');
+            // alert('Ya está en el carrito');
+            cart.map(product => {
+                if(product.id === item.id){
+                    product.cantidad = cantidad
+                    console.log('cart', cart)
+                    setCart(cart)
+                }
+            })
+            
         } else {
             setCart([...cart, { ...item, cantidad }]);
         }

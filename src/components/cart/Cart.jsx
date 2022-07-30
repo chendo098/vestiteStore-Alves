@@ -29,7 +29,7 @@ const {cart, deleteAll, deleteOne, suma} = useContext(CartContext)
                         <p>{prod.descripcion}</p>
                     </div> 
                     <div className='col-3'>
-                        <h2>Cantidad: {prod.stock}</h2>
+                        <h2>Cantidad: {prod.cantidad}</h2>
                     </div>
                     <div className='col-2'>
                         <h2>$ {prod.precio}</h2>
